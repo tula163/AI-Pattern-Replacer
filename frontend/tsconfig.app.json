@@ -7,7 +7,12 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "target": "ESNext",
+    "module": "ESNext",  // <<< 必须改成 esnext 或 es2020 以上
+    "moduleResolution": "bundler", // Vite 推荐
+    "types": ["vite/client"],  // <<< 添加这行以获得 import.meta 类型提示
+    
   },
   "include": ["src"]
 }

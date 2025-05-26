@@ -1,11 +1,11 @@
-# backend/llm/regex_from_prompt.py
+# llm/regex_from_prompt.py
 from .gpt_client import call_gpt
 
-def generate_regex_from_description(prompt: str) -> str:
-    prompt = (
-        f"Please output only the regular expression pattern for matching the following requirement.\n"
-        f"Requirement: {prompt}\n"
-        f"Regex:"
-    )
-    return call_gpt(prompt)
+# def extract_regex_from_text(text: str) -> str:
+#     prompt = f"Convert this to regex: {text}"
+#     return call_gpt(prompt)
 
+def extract_regex_from_text(prompt: str) -> str:
+    instruction = f"Convert the following natural language instruction to a regex pattern:\nInstruction: {prompt}"
+    regex = call_gpt(instruction)
+    return regex
