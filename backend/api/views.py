@@ -6,6 +6,17 @@ from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
 
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+import json, re
+
+# api/views.py
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import status
+from llm.regex_from_prompt import extract_regex_from_text
+from llm.regex_from_prompt import parse_instruction
+
 
 @csrf_exempt
 def upload_chunk(request):
@@ -27,11 +38,7 @@ def test_llm(request):
     return JsonResponse({"regex": regex})
 
 
-# api/views.py
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
-from llm.regex_from_prompt import extract_regex_from_text
+
 
 class RegexExtractionAPIView(APIView):
     def post(self, request):
@@ -45,3 +52,50 @@ class RegexExtractionAPIView(APIView):
         except Exception as e:
             return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
+
+
+@csrf_exempt
+def modify_table(request):
+    if request.method != 'POST':
+        return JsonResponse({"error": "Only POST allowed"}, status=405)
+
+    body = json.loads(request.body)
+    table = body.get("table_data")
+    instruction = body.get("instruction")
+
+    if not table or not instruction:
+        return JsonResponse({"error": "Missing table_data or instruction"}, status=400)
+
+    header = table[0]
+    rows = table[1:]
+
+    try:
+        result = parse_instruction(instruction, header)
+        column_name = result["column"]
+        regex = result["regex"]
+        replacement = result["replacement"]
+        pattern_type = result.get("pattern_type", "custom")
+    except Exception as e:
+        return JsonResponse({ "error": str(e) }, status=400)
+
+    if column_name not in header:
+        return JsonResponse({"error": f"Column '{column_name}' not found in table header"}, status=400)
+
+    col_idx = header.index(column_name)
+    compiled = re.compile(regex)
+    new_rows = []
+
+    for row in rows:
+        if len(row) > col_idx and isinstance(row[col_idx], str):
+            row[col_idx] = compiled.sub(replacement, row[col_idx])
+        new_rows.append(row)
+
+    return JsonResponse({
+        "modified_data": [header] + new_rows,
+        "regex": regex,
+        "parsed": {
+            "column": column_name,
+            "replacement": replacement,
+            "pattern_type": pattern_type
+        }
+    })
