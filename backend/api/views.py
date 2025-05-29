@@ -16,6 +16,7 @@ from rest_framework.response import Response
 from rest_framework import status
 from llm.regex_from_prompt import extract_regex_from_text
 from llm.regex_from_prompt import parse_instruction
+from regex_platform.utils.response import success, error
 
 
 @csrf_exempt
@@ -57,45 +58,46 @@ class RegexExtractionAPIView(APIView):
 @csrf_exempt
 def modify_table(request):
     if request.method != 'POST':
-        return JsonResponse({"error": "Only POST allowed"}, status=405)
-
-    body = json.loads(request.body)
-    table = body.get("table_data")
-    instruction = body.get("instruction")
-
-    if not table or not instruction:
-        return JsonResponse({"error": "Missing table_data or instruction"}, status=400)
-
-    header = table[0]
-    rows = table[1:]
+        return error("Only POST allowed", code=405)
 
     try:
+        body = json.loads(request.body)
+        table = body.get("table_data")
+        instruction = body.get("instruction")
+
+        if not table or not instruction:
+            return error("Missing table_data or instruction")
+
+        header = table[0]
+        rows = table[1:]
+
         result = parse_instruction(instruction, header)
         column_name = result["column"]
         regex = result["regex"]
         replacement = result["replacement"]
         pattern_type = result.get("pattern_type", "custom")
+
+        if column_name not in header:
+            return error(f"Column '{column_name}' not found in table header")
+
+        col_idx = header.index(column_name)
+        compiled = re.compile(regex)
+        new_rows = []
+
+        for row in rows:
+            if len(row) > col_idx and isinstance(row[col_idx], str):
+                row[col_idx] = compiled.sub(replacement, row[col_idx])
+            new_rows.append(row)
+
+        return success({
+            "modified_data": [header] + new_rows,
+            "regex": regex,
+            "parsed": {
+                "column": column_name,
+                "replacement": replacement,
+                "pattern_type": pattern_type,
+            }
+        })
+
     except Exception as e:
-        return JsonResponse({ "error": str(e) }, status=400)
-
-    if column_name not in header:
-        return JsonResponse({"error": f"Column '{column_name}' not found in table header"}, status=400)
-
-    col_idx = header.index(column_name)
-    compiled = re.compile(regex)
-    new_rows = []
-
-    for row in rows:
-        if len(row) > col_idx and isinstance(row[col_idx], str):
-            row[col_idx] = compiled.sub(replacement, row[col_idx])
-        new_rows.append(row)
-
-    return JsonResponse({
-        "modified_data": [header] + new_rows,
-        "regex": regex,
-        "parsed": {
-            "column": column_name,
-            "replacement": replacement,
-            "pattern_type": pattern_type
-        }
-    })
+        return error(str(e), code=500)

@@ -1,12 +1,24 @@
-// src/api/pattern.ts
-import api from "./index";
+import api from './index';
+// import type { BaseResponse } from '../types/api';
 
-interface RegexResponse {
-  regex: string;
-  explanation?: string;
+interface ModifyTableRequest {
+  instruction: string;
+  table_data: string[][];
 }
 
-export const getRegexFromText = async (text: string): Promise<RegexResponse> => {
-  const response = await api.post("/extract-regex", { text });
-  return response.data;
+interface RegexResponseData {
+  modified_data: string[][];
+  regex: string;
+  parsed: {
+    column: string;
+    replacement: string;
+    pattern_type: string;
+  };
+}
+
+export const apiModify = async (
+  payload: ModifyTableRequest
+): Promise<RegexResponseData> => {
+  return api.post('/modify-table', payload);
 };
+

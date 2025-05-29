@@ -1,59 +1,183 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+
+
+import {
+  Box,
+  Button
+} from "@mui/material";
+// import { LoadingButton } from '@mui/lab';
+
+import { exportToExcel } from '../utils/export';
+import { apiModify } from "../api/pattern"
+import axios from "axios";
+
+
+import { useState, useRef } from "react";
+import Navbar from "../components/Navbar";
+
+import ModifiedTable from "./TableComponents/PreviewTable";
+import { useDataStore } from '../store/useDataStore';
+import { uploadAndParseFile } from "../utils/uploadAndParseFile"
+import { Snackbar, Alert } from '@mui/material';
+
 
 const UploadTable = () => {
-  const [tableData, setTableData] = useState<{ columns: string[], rows: any[] } | null>(null);
+
   const [loading, setLoading] = useState(false);
+  const [inputText, setInputText] = useState("Find email addresses in the Email column and replace them with 'REDACTED' ");
 
-  const handleUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (!file) return;
+  const [open, setOpen] = useState(false);
+  const [severity, setSeverity] = useState<'success' | 'error'>('success');
+  const [message, setMessage] = useState('');
 
-    const formData = new FormData();
-    formData.append('file', file);
+ 
+  // data from global store 
+  const { originalData, modifiedData, isTransformed,fileName } = useDataStore();
+  // method from global store 
+  const setIsTransformed = useDataStore((state) => state.setIsTransformed);
+  const setModifiedData = useDataStore((state) => state.setModifiedData);
 
+
+  const handleTransform = async () => {
     setLoading(true);
+ 
+  
     try {
-      const response = await axios.post('http://localhost:8000/api/upload-file', formData, {
-        headers: { 'Content-Type': 'multipart/form-data' }
-      });
-      setTableData(response.data);
+      const res = await apiModify({ instruction: inputText, table_data: originalData });
+      setModifiedData(res.modified_data);
+      setIsTransformed(true); 
+      setSeverity('success');
+      setMessage('success!');
     } catch (err) {
-      console.error('Upload error', err);
+      console.error(err);
+      let message = "Unexpected error occurred";
+      if (axios.isAxiosError(err)) {
+
+        message = err.response?.data?.message || err.message || message;
+
+      }
+  
+      setSeverity('error');
+      setMessage(message);
+     
+ 
     } finally {
       setLoading(false);
     }
+    setOpen(true);
   };
 
+  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setInputText(value);
+
+  };
+
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFileClick = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    console.log(modifiedData, "modifiedData");
+
+    if (file) {
+      setModifiedData([]);
+      useDataStore.getState().clearAll();
+      useDataStore.getState().setFileName(file.name);
+      uploadAndParseFile(file);
+
+    }
+  };
+
+
   return (
-    <div className="p-6">
-      <input type="file" accept=".csv,.xlsx" onChange={handleUpload} className="mb-4" />
+    <Box className="min-h-screen flex flex-col">
+      <Navbar />
 
-      {loading && <div className="text-blue-500">Uploading...</div>}
+      <main className="bg-gradient-to-b from-purple-100 via-white to-pink-100 flex-1 flex flex-col h-full ">
+        <div className="min-h-screen  bg-gray-50 flex">
+        <>
+      <Snackbar open={open} autoHideDuration={4000} onClose={() => setOpen(false)} >
+        <Alert onClose={() => setOpen(false)} severity={severity} sx={{ width: '100%' }}>
+          {message}
+        </Alert>
+      </Snackbar>
+    </>
+          {/* left */}
+          <div className="flex-1 px-10 py-6 h-screen overflow-hidden" >
+            <div className="bg-white rounded-xl  h-full shadow-md p-6 ">
+              <h2 className="text-xl font-bold mb-4">📁 {fileName}</h2>
+              {isTransformed && <button
+                onClick={() => exportToExcel(modifiedData, 'ModifiedData.xlsx')}
+                className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+              >
+                Export
+              </button>}
 
-      {tableData && (
-        <div className="overflow-auto border rounded mt-4">
-          <table className="min-w-full text-sm text-left">
-            <thead className="bg-gray-100">
-              <tr>
-                {tableData.columns.map((col) => (
-                  <th key={col} className="px-3 py-2 font-medium text-gray-700">{col}</th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {tableData.rows.map((row, idx) => (
-                <tr key={idx} className="border-t">
-                  {tableData.columns.map((col) => (
-                    <td key={col} className="px-3 py-1 text-gray-800">{row[col]}</td>
-                  ))}
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              <ModifiedTable
+                modifiedData={isTransformed ? modifiedData : originalData}
+                originalData={originalData}
+                highlightChanges={isTransformed}
+              />
+
+
+            </div>
+          </div>
+
+
+          {/* right */}
+          <div className="w-[300px] p-6 border-l border-gray-200 bg-white shadow-inner flex flex-col gap-6">
+            {/* resubmit */}
+            <div
+              className="bg-green-100 text-green-800 p-4 rounded-lg hover:cursor-pointer hover:bg-green-200"
+              onClick={handleFileClick}
+            >
+              <p className="font-semibold">⚡ Want to change another file ?</p>
+              <p className="text-sm mt-2  text-green-700">Click anywhere here to upload</p>
+
+              <input
+                type="file"
+                accept=".csv,.xlsx"
+                className="hidden"
+                ref={fileInputRef}
+                onChange={handleFileUpload}
+              />
+            </div>
+
+            {/* natural input */}
+            <div className="bg-gray-100 rounded-lg p-4">
+              <label htmlFor="instruction" className="block font-medium text-sm mb-2">🧠 Describe your change</label>
+              <textarea
+                id="instruction"
+                className="w-full p-2 border border-gray-300 rounded resize-none"
+                rows={8}
+                placeholder="e.g. Replace phone number in Phone column with REDACTED"
+                value={inputText}
+                onChange={handleTextChange}
+              />
+            </div>
+
+
+            <div className="flex justify-end ">
+
+              <Button
+                variant="contained"
+                loading={loading}
+                onClick={() => handleTransform()}
+              >
+                TRANSFORM
+              </Button>
+            </div>
+          </div>
+
         </div>
-      )}
-    </div>
+
+
+      </main>
+
+    </Box>
   );
 };
 
