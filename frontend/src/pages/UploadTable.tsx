@@ -9,6 +9,7 @@ import {
 import { exportToExcel } from '../utils/export';
 import { apiModify } from "../api/pattern"
 import axios from "axios";
+import LoadingContainer from '../components/LoadingContainer';
 
 
 import { useState, useRef } from "react";
@@ -17,19 +18,20 @@ import Navbar from "../components/Navbar";
 import ModifiedTable from "./TableComponents/PreviewTable";
 import { useDataStore } from '../store/useDataStore';
 import { uploadAndParseFile } from "../utils/uploadAndParseFile"
-import { Snackbar, Alert } from '@mui/material';
+
+import { useSnackbarQueue } from '../store/useSnackbarQueue';
 
 
 const UploadTable = () => {
 
   const [loading, setLoading] = useState(false);
+  const [tableLoading, setTableLOading] = useState(false);
   const [inputText, setInputText] = useState("Find email addresses in the Email column and replace them with 'REDACTED' ");
 
-  const [open, setOpen] = useState(false);
-  const [severity, setSeverity] = useState<'success' | 'error'>('success');
-  const [message, setMessage] = useState('');
 
- 
+
+
+  const { showMessage } = useSnackbarQueue();
   // data from global store 
   const { originalData, modifiedData, isTransformed,fileName } = useDataStore();
   // method from global store 
@@ -39,14 +41,15 @@ const UploadTable = () => {
 
   const handleTransform = async () => {
     setLoading(true);
+    setTableLOading(true)
  
   
     try {
       const res = await apiModify({ instruction: inputText, table_data: originalData });
       setModifiedData(res.modified_data);
       setIsTransformed(true); 
-      setSeverity('success');
-      setMessage('success!');
+
+      showMessage('success', 'Success transform !');
     } catch (err) {
       console.error(err);
       let message = "Unexpected error occurred";
@@ -56,14 +59,15 @@ const UploadTable = () => {
 
       }
   
-      setSeverity('error');
-      setMessage(message);
+
+      showMessage('error', message);
      
  
     } finally {
       setLoading(false);
+      setTableLOading(false)
     }
-    setOpen(true);
+
   };
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -98,29 +102,25 @@ const UploadTable = () => {
 
       <main className="bg-gradient-to-b from-purple-100 via-white to-pink-100 flex-1 flex flex-col h-full ">
         <div className="min-h-screen  bg-gray-50 flex">
-        <>
-      <Snackbar open={open} autoHideDuration={4000} onClose={() => setOpen(false)} >
-        <Alert onClose={() => setOpen(false)} severity={severity} sx={{ width: '100%' }}>
-          {message}
-        </Alert>
-      </Snackbar>
-    </>
+
           {/* left */}
           <div className="flex-1 px-10 py-6 h-screen overflow-hidden" >
             <div className="bg-white rounded-xl  h-full shadow-md p-6 ">
-              <h2 className="text-xl font-bold mb-4">📁 {fileName}</h2>
+              <div className="flex justfy-between">   <h2 className="text-xl font-bold mb-4">📁 {fileName}</h2>
               {isTransformed && <button
                 onClick={() => exportToExcel(modifiedData, 'ModifiedData.xlsx')}
                 className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
               >
                 Export
-              </button>}
+              </button>} </div>
+              <LoadingContainer loading={tableLoading} >
 
               <ModifiedTable
                 modifiedData={isTransformed ? modifiedData : originalData}
                 originalData={originalData}
                 highlightChanges={isTransformed}
               />
+              </LoadingContainer>
 
 
             </div>
