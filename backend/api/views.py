@@ -5,9 +5,6 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse
-
-from django.http import JsonResponse
-from django.views.decorators.csrf import csrf_exempt
 import json, re
 
 # api/views.py
@@ -17,7 +14,7 @@ from rest_framework import status
 from llm.regex_from_prompt import extract_regex_from_text
 from llm.regex_from_prompt import parse_instruction
 from regex_platform.utils.response import success, error
-
+from .models import UploadedFile  # 👈 添加导入
 
 @csrf_exempt
 def upload_chunk(request):
@@ -41,19 +38,6 @@ def test_llm(request):
 
 
 
-class RegexExtractionAPIView(APIView):
-    def post(self, request):
-        prompt = request.data.get("text")
-        if not prompt:
-            return Response({"error": "Missing 'text' in request."}, status=status.HTTP_400_BAD_REQUEST)
-
-        try:
-            regex = extract_regex_from_text(prompt)
-            return Response({"regex": regex})
-        except Exception as e:
-            return Response({"error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
-
-
 
 @csrf_exempt
 def modify_table(request):
@@ -64,6 +48,7 @@ def modify_table(request):
         body = json.loads(request.body)
         table = body.get("table_data")
         instruction = body.get("instruction")
+        file_name = body.get("file_name")  # ✅ 新增：获取文件名
 
         if not table or not instruction:
             return error("Missing table_data or instruction")
@@ -88,6 +73,13 @@ def modify_table(request):
             if len(row) > col_idx and isinstance(row[col_idx], str):
                 row[col_idx] = compiled.sub(replacement, row[col_idx])
             new_rows.append(row)
+
+        # ✅ 保存上传记录到数据库（可选字段 file_name）
+        if file_name:
+            UploadedFile.objects.create(
+                file_name=file_name,
+                status="processed"
+            )
 
         return success({
             "modified_data": [header] + new_rows,
