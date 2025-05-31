@@ -6,10 +6,10 @@ import HomeImg from '../assets/home.png';
 // import CheckBoxIcon from '@mui/icons-material/CheckBox';
 
 // import { useNavigate } from "react-router-dom";
-import FileUpload from './TableComponents/FileUpload';
+import FileUpload from './TransformComponents/FileUpload';
 
 export default function Home() {
-  // const navigate = useNavigate();
+
   return (
     <div className="min-h-screen flex flex-col">
 
@@ -49,7 +49,7 @@ export default function Home() {
         </div >
 
         {/* upload */}
-        <div className=" flex-1 w-full flex justify-center">
+        <div className="flex-1 w-full flex justify-center h-80">
           <FileUpload></FileUpload>
 
         </div>

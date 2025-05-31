@@ -8,28 +8,33 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
 SECRET_KEY = os.getenv("OPENAI_API_KEY", "unsafe-default-secret-key")
 DEBUG = True
 
-ALLOWED_HOSTS = ["*"]  # 开发阶段允许全部
+ALLOWED_HOSTS = ["*"]  # All are allowed during the development stage
 
-# 应用模块
+# application module
 INSTALLED_APPS = [
+    "simpleui", 
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    
     "rest_framework",
-    "corsheaders",          # ✅ 支持跨域
-    "api",                  # ✅ 你的应用
+    "corsheaders",         
+    "api",                  
 ]
 
-# 中间件
+# middleware
 MIDDLEWARE = [
-    "corsheaders.middleware.CorsMiddleware",  # ✅ 必须放最上面
+    "corsheaders.middleware.CorsMiddleware", 
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -59,7 +64,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "regex_platform.wsgi.application"
 
-# 数据库
+# database
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
@@ -67,7 +72,7 @@ DATABASES = {
     }
 }
 
-# 密码验证
+# password authentification
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -83,18 +88,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# 国际化
+# internationalization
 LANGUAGE_CODE = "en-us"
 TIME_ZONE = "UTC"
 USE_I18N = True
 USE_TZ = True
 
-# 静态文件
+# static file
 STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# ✅ REST Framework
+# REST Framework
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": [
         "rest_framework.renderers.JSONRenderer",
@@ -102,10 +107,10 @@ REST_FRAMEWORK = {
     ]
 }
 
-# ✅ CORS 配置（开发阶段允许全部）
+# CORS configuration (all allowed in the development stage)
 CORS_ALLOW_ALL_ORIGINS = True
 
-# ✅ 若你想限制指定前端源，可以替换为：
+# If you want to restrict the specified front-end source, you can replace it with:
 # CORS_ALLOWED_ORIGINS = [
 #     "http://localhost:5173",
 # ]

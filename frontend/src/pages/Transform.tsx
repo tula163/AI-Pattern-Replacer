@@ -12,17 +12,20 @@ import axios from "axios";
 import LoadingContainer from '../components/LoadingContainer';
 
 
+
 import { useState, useRef } from "react";
 import Navbar from "../components/Navbar";
 
-import ModifiedTable from "./TableComponents/PreviewTable";
-import { useDataStore } from '../store/useDataStore';
-import { uploadAndParseFile } from "../utils/uploadAndParseFile"
+import ModifiedTable from "./TransformComponents/PreviewTable";
+import FileUpload from './TransformComponents/FileUpload';
 
+import { useDataStore } from '../store/useDataStore';
 import { useSnackbarQueue } from '../store/useSnackbarQueue';
 
 
-const UploadTable = () => {
+
+
+const Transform = () => {
 
   const [loading, setLoading] = useState(false);
   const [tableLoading, setTableLOading] = useState(false);
@@ -33,7 +36,7 @@ const UploadTable = () => {
 
   const { showMessage } = useSnackbarQueue();
   // data from global store 
-  const { originalData, modifiedData, isTransformed,fileName } = useDataStore();
+  const { originalData, modifiedData, isTransformed, fileName } = useDataStore();
   // method from global store 
   const setIsTransformed = useDataStore((state) => state.setIsTransformed);
   const setModifiedData = useDataStore((state) => state.setModifiedData);
@@ -42,39 +45,33 @@ const UploadTable = () => {
   const handleTransform = async () => {
     setLoading(true);
     setTableLOading(true)
- 
-  
-    try {
-      const res = await apiModify({ instruction: inputText, table_data: originalData ,filename: fileName ?? ''});
-      setModifiedData(res.modified_data);
-      setIsTransformed(true); 
 
+
+    try {
+      const res = await apiModify({ instruction: inputText, table_data: originalData, filename: fileName ?? '' });
+      setModifiedData(res.modified_data);
+      setIsTransformed(true);
       showMessage('success', 'Success transform !');
     } catch (err) {
-      console.error(err);
+      // console.error(err);
       let message = "Unexpected error occurred";
+
       if (axios.isAxiosError(err)) {
-
         message = err.response?.data?.message || err.message || message;
-
       }
-  
-
       showMessage('error', message);
-     
- 
     } finally {
       setLoading(false);
       setTableLOading(false)
     }
-
   };
 
-  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
     setInputText(value);
 
   };
+  
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -82,18 +79,7 @@ const UploadTable = () => {
     fileInputRef.current?.click();
   };
 
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    console.log(modifiedData, "modifiedData");
 
-    if (file) {
-      setModifiedData([]);
-      useDataStore.getState().clearAll();
-      useDataStore.getState().setFileName(file.name);
-      uploadAndParseFile(file);
-
-    }
-  };
 
 
   return (
@@ -105,26 +91,27 @@ const UploadTable = () => {
 
           {/* left */}
           <div className="flex-1 px-10 py-6 h-screen overflow-hidden" >
-          <LoadingContainer loading={tableLoading} >
-            <div className="bg-white rounded-xl  h-full shadow-md p-6 ">
-              <div className="flex justify-between">   <h2 className="text-xl font-bold mb-4">📁 {fileName}</h2>
-              {isTransformed && <button
-                onClick={() => exportToExcel(modifiedData, 'ModifiedData.xlsx')}
-                className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
-              >
-                Export
-              </button>} </div>
-           
-
-              <ModifiedTable
-                modifiedData={isTransformed ? modifiedData : originalData}
-                originalData={originalData}
-                highlightChanges={isTransformed}
-              />
-            
+            <LoadingContainer loading={tableLoading} >
+              <div className="bg-white rounded-xl  h-full shadow-md p-6 ">
+                <div className="flex justify-between">   <h2 className="text-xl font-bold mb-4">📁 {fileName}</h2>
+                  {isTransformed && <button
+                    onClick={() => exportToExcel(modifiedData, 'ModifiedData.xlsx')}
+                    className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
+                  >
+                    Export
+                  </button>} </div>
 
 
-            </div>
+                <ModifiedTable
+                  modifiedData={isTransformed ? modifiedData : originalData}
+                  originalData={originalData}
+                  highlightChanges={isTransformed}
+                />
+
+
+
+              </div>
+
             </LoadingContainer>
           </div>
 
@@ -133,19 +120,15 @@ const UploadTable = () => {
           <div className="w-[300px] p-6 border-l border-gray-200 bg-white shadow-inner flex flex-col gap-6">
             {/* resubmit */}
             <div
-              className="bg-green-100 text-green-800 p-4 rounded-lg hover:cursor-pointer hover:bg-green-200"
+              className="bg-green-100 text-green-800p-4 p-4  rounded-lg hover:cursor-pointer hover:bg-green-200"
               onClick={handleFileClick}
             >
-              <p className="font-semibold">⚡ Want to change another file ?</p>
-              <p className="text-sm mt-2  text-green-700">Click anywhere here to upload</p>
 
-              <input
-                type="file"
-                accept=".csv,.xlsx"
-                className="hidden"
-                ref={fileInputRef}
-                onChange={handleFileUpload}
-              />
+              <p className="font-semibold mb-4">⚡ Want to change another file ?</p>
+
+              <FileUpload></FileUpload>
+
+
             </div>
 
             {/* natural input */}
@@ -183,4 +166,4 @@ const UploadTable = () => {
   );
 };
 
-export default UploadTable;
+export default Transform;

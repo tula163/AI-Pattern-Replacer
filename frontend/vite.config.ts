@@ -15,6 +15,10 @@ export default defineConfig({
         target: 'http://127.0.0.1:8000',  // 后端地址
         changeOrigin: true,
       },
+      '/media': {
+        target: 'http://localhost:8000',  // Django 端口
+        changeOrigin: true,
+      },
     },
   },
 });

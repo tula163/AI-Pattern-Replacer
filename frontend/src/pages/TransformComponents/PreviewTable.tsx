@@ -5,9 +5,9 @@ import {
 } from '@mui/material';
 
 interface ModifiedTableProps {
-  modifiedData: string[][];         
-  originalData?: string[][];        
-  highlightChanges?: boolean;                     
+  modifiedData: string[][];
+  originalData?: string[][];
+  highlightChanges?: boolean;
 }
 
 const ModifiedTable: React.FC<ModifiedTableProps> = ({
@@ -76,7 +76,7 @@ const ModifiedTable: React.FC<ModifiedTableProps> = ({
                               }
                             }}
                           >
-                              {cell !== undefined && cell !== null ? cell : ''}
+                            {cell !== undefined && cell !== null ? cell : ''}
                           </TableCell>
                         );
                       })}

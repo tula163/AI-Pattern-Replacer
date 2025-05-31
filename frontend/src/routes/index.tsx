@@ -1,5 +1,5 @@
 import Home from '../pages/Home';
-import UploadTable from '../pages/UploadTable'
+import Transform from '../pages/Transform'
 
 import type { ComponentType } from 'react';
 
@@ -17,8 +17,8 @@ export const routes: RouteConfig[] = [
     page: 'Home',
   },
   {
-    path: '/upload',
-    component: UploadTable,
-    page: 'UploadTable', 
+    path: '/transform',
+    component: Transform,
+    page: 'Transform', 
   }
 ];

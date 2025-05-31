@@ -24,6 +24,9 @@ export const uploadAndParseFile = async (file: File): Promise<void> => {
           defval: '' 
         })
 
+        // console.log(parsedData,"parsedDataparsedDataparsedDataparsedDataparsedData");
+        
+
         const { setOriginalData, setModifiedData } = useDataStore.getState()
 
         setModifiedData([])
@@ -32,12 +35,12 @@ export const uploadAndParseFile = async (file: File): Promise<void> => {
 
         resolve()
       } catch (err) {
-        reject('❌ Failed to parse the file: ' + err)
+        reject('Failed to parse the file: ' + err)
       }
     }
 
     reader.onerror = () => {
-      reject('❌ Unable to read the file')
+      reject('Unable to read the file')
     }
 
     reader.readAsArrayBuffer(file)
