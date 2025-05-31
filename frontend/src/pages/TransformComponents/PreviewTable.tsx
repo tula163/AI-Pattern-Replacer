@@ -60,7 +60,13 @@ const ModifiedTable: React.FC<ModifiedTableProps> = ({
                     <TableRow key={rowIdx}>
                       {row.map((cell, colIdx) => {
                         const original = originalData?.[actualRowIdx]?.[colIdx];
-                        const changed = highlightChanges && original !== undefined && original !== cell;
+              
+                        const isCellModified = (a: unknown, b: unknown) => {
+                          
+                          return String(a ?? '').trim() !== String(b ?? '').trim();
+                        };
+                        
+                        const changed = highlightChanges && isCellModified(original, cell);
                         return (
                           <TableCell
                             key={colIdx}
