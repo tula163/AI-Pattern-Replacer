@@ -20,6 +20,7 @@ Your job:
 3. Generate a correct and robust regular expression for that pattern.
 4. Suggest the replacement value.
 
+Regex should include boundaries like \\b if necessary, to avoid partial matches.
 ⚠️ DO NOT explain anything. Just return JSON strictly in the following format:
 
 {{
@@ -29,8 +30,8 @@ Your job:
   "replacement": "REDACTED"
 }}
 
-❌ No Markdown, no extra text.
-✅ Only raw JSON that can be parsed by Python.
+No Markdown, no extra text.
+Only raw JSON that can be parsed by Python.
 """
     response = call_gpt(prompt)
     try:

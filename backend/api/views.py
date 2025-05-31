@@ -141,7 +141,7 @@ def modify_table(request):
 
         for row in rows:
             if len(row) > col_idx:
-                value = str(row[col_idx])  # 强制转换为字符串
+                value = str(row[col_idx])  
                 row[col_idx] = compiled.sub(replacement, value)
             new_rows.append(row)
 

@@ -2,7 +2,7 @@
 // src/api/index.ts
 import axios from 'axios';
 import type { AxiosInstance } from 'axios';
-// import type { BaseResponse } from '../types/api';
+
 
 const instance: AxiosInstance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,

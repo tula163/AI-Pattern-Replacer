@@ -2,7 +2,7 @@
 import { create } from 'zustand';
 
 export type SnackbarMessage = {
-  id: number; // 唯一 ID
+  id: number; 
   message: string;
   severity: 'success' | 'error';
 };
@@ -16,7 +16,7 @@ type SnackbarQueueState = {
 export const useSnackbarQueue = create<SnackbarQueueState>((set) => ({
   messages: [],
   showMessage: (severity, message) => {
-    const id = Date.now() + Math.random(); // 避免重复
+    const id = Date.now() + Math.random(); 
     set((state) => ({
       messages: [...state.messages, { id, message, severity }],
     }));
