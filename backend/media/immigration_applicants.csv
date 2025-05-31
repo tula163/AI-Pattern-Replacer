@@ -1,0 +1,201 @@
+Age,Nationality,Marital Status,Education Level,Studied in Australia,Occupation,Years of Experience,Australian Work Experience,IELTS Score,PTE Score,Visa Type,Financial Proof (AUD),Employer Sponsorship
+24,China,Single,Bachelor,No,Software Engineer,18,Yes,8.0,58,190,220102,No
+37,USA,Married,Master,No,Nurse,6,Yes,6.0,72,190,182130,Yes
+46,Canada,Single,Master,No,Nurse,19,Yes,6.5,65,491,267285,No
+32,USA,Married,Master,No,Electrician,5,Yes,6.0,72,190,126260,No
+28,Germany,Single,Bachelor,No,Chef,0,No,6.0,79,190,209476,No
+25,Canada,Married,Master,Yes,Accountant,16,Yes,7.5,65,482,284554,No
+46,Canada,Single,Master,No,Chef,10,Yes,7.0,79,491,286356,No
+38,UK,Married,Bachelor,No,Chef,17,Yes,8.0,58,482,210928,No
+24,Canada,Single,PhD,Yes,Nurse,16,Yes,6.0,50,189,190272,No
+43,USA,Married,Bachelor,No,Chef,6,Yes,8.0,65,189,114178,No
+36,Canada,Married,Master,Yes,Software Engineer,16,Yes,6.0,58,189,83997,No
+40,UK,Married,Master,Yes,Nurse,19,Yes,6.5,58,491,206683,No
+28,UK,Single,Bachelor,Yes,Software Engineer,8,Yes,6.0,65,190,169273,No
+28,Germany,Married,PhD,Yes,Accountant,16,Yes,7.5,79,491,222307,Yes
+41,USA,Single,Master,No,Nurse,19,Yes,7.0,58,491,298500,Yes
+38,India,Married,Master,No,Accountant,7,Yes,6.5,72,190,216129,No
+21,India,Single,Master,No,Nurse,16,Yes,6.0,58,482,182311,Yes
+25,Canada,Married,Bachelor,No,Electrician,6,Yes,8.0,79,189,284746,No
+41,Germany,Single,Master,No,Chef,0,No,6.5,79,482,295546,No
+20,China,Single,PhD,No,Electrician,12,Yes,6.5,72,189,246733,Yes
+39,Canada,Married,Master,Yes,Accountant,18,Yes,6.0,58,491,176945,No
+38,Germany,Single,Master,No,Chef,18,Yes,6.5,79,189,95272,No
+19,USA,Single,PhD,Yes,Nurse,16,Yes,8.0,65,491,139393,No
+41,USA,Married,Master,No,Chef,12,Yes,6.5,50,482,111212,No
+29,USA,Single,Bachelor,Yes,Software Engineer,15,Yes,8.0,50,491,196470,No
+47,USA,Single,Bachelor,No,Chef,7,Yes,6.0,50,482,170030,No
+23,USA,Single,Bachelor,No,Software Engineer,18,Yes,7.0,58,190,106503,Yes
+19,Germany,Married,PhD,Yes,Chef,17,Yes,6.5,72,190,187710,No
+49,Germany,Single,Master,Yes,Software Engineer,0,No,7.0,79,190,56570,No
+45,UK,Married,Bachelor,No,Accountant,13,Yes,8.0,65,491,118785,No
+38,India,Single,PhD,Yes,Electrician,18,Yes,6.5,65,190,59110,No
+18,USA,Single,Master,No,Nurse,14,Yes,7.5,58,189,286971,No
+29,China,Single,PhD,Yes,Chef,17,Yes,7.0,50,482,129141,No
+43,Germany,Married,Bachelor,Yes,Electrician,1,No,6.5,58,482,62115,No
+39,China,Single,Bachelor,No,Nurse,16,Yes,7.0,72,189,89062,No
+46,China,Single,Bachelor,No,Nurse,17,Yes,6.5,72,491,72911,No
+29,China,Married,PhD,Yes,Software Engineer,5,Yes,6.0,79,491,154061,No
+42,UK,Single,PhD,Yes,Accountant,18,Yes,7.0,79,482,82556,No
+34,Germany,Married,Bachelor,Yes,Accountant,3,No,7.5,72,190,259203,No
+44,China,Married,PhD,No,Electrician,0,No,7.5,72,491,178335,No
+44,USA,Single,Bachelor,No,Accountant,7,Yes,8.0,72,491,51969,No
+48,Canada,Married,Bachelor,No,Chef,6,Yes,6.5,58,189,93753,No
+27,China,Single,Master,No,Accountant,2,No,7.0,72,189,263883,No
+49,UK,Married,PhD,Yes,Electrician,9,Yes,8.0,65,190,185542,No
+45,Germany,Married,Bachelor,No,Accountant,9,Yes,7.0,50,491,171863,No
+45,UK,Single,Bachelor,No,Chef,18,Yes,6.5,72,491,60225,Yes
+33,China,Married,PhD,Yes,Software Engineer,13,Yes,7.5,50,189,288932,No
+32,Germany,Married,Master,No,Electrician,1,No,6.0,58,491,173008,No
+47,Canada,Married,Master,No,Software Engineer,0,No,7.5,50,482,288582,No
+47,China,Married,Bachelor,No,Software Engineer,17,Yes,8.0,58,189,289367,Yes
+32,UK,Married,PhD,No,Software Engineer,6,Yes,6.0,65,190,204268,No
+47,India,Single,Master,No,Nurse,7,Yes,8.0,58,189,155823,No
+36,USA,Married,PhD,No,Nurse,0,No,6.5,58,491,63669,No
+29,UK,Single,PhD,No,Software Engineer,2,No,6.0,79,190,218452,Yes
+40,Germany,Married,Bachelor,No,Electrician,7,Yes,8.0,72,189,174398,Yes
+37,China,Single,Master,No,Chef,14,Yes,6.5,72,482,160677,No
+49,USA,Single,Bachelor,Yes,Chef,4,Yes,7.5,65,482,296958,No
+42,China,Married,Master,Yes,Accountant,2,No,6.5,65,189,98320,No
+20,Germany,Married,Master,Yes,Electrician,18,Yes,7.0,72,482,228486,No
+22,China,Married,Master,Yes,Nurse,0,No,6.5,79,482,284614,No
+36,India,Single,Master,Yes,Software Engineer,14,Yes,6.5,72,482,196649,No
+24,USA,Married,Master,No,Accountant,7,Yes,7.0,79,190,175354,No
+38,USA,Single,PhD,No,Chef,1,No,8.0,65,482,138009,No
+26,Germany,Single,Bachelor,No,Nurse,2,No,8.0,50,482,236481,Yes
+24,India,Single,PhD,No,Nurse,13,Yes,6.5,65,482,78625,No
+35,UK,Married,Master,No,Software Engineer,13,Yes,7.0,65,190,262112,No
+21,China,Married,Bachelor,No,Chef,10,Yes,7.0,58,189,74089,No
+42,Canada,Single,Master,No,Electrician,15,Yes,7.5,58,491,86487,No
+45,China,Single,Bachelor,No,Nurse,3,No,8.0,58,482,246910,No
+31,China,Married,PhD,Yes,Software Engineer,19,Yes,6.0,58,189,278071,No
+35,UK,Single,Bachelor,Yes,Electrician,4,Yes,8.0,79,482,160448,Yes
+43,China,Married,Bachelor,Yes,Chef,13,Yes,8.0,72,190,275867,Yes
+26,India,Single,Bachelor,Yes,Nurse,15,Yes,7.5,50,189,100138,No
+43,India,Married,Bachelor,Yes,Electrician,17,Yes,6.0,65,190,223895,No
+38,USA,Single,Bachelor,No,Electrician,6,Yes,7.5,79,482,218280,No
+19,Germany,Married,Master,No,Electrician,9,Yes,6.0,50,482,104061,Yes
+37,Canada,Single,Bachelor,Yes,Nurse,6,Yes,6.5,79,190,211731,Yes
+45,China,Married,Bachelor,Yes,Nurse,0,No,6.0,79,491,151376,No
+32,China,Married,PhD,Yes,Accountant,18,Yes,7.5,65,190,212962,Yes
+45,UK,Single,Bachelor,No,Chef,15,Yes,8.0,72,482,129134,No
+24,Germany,Single,PhD,No,Software Engineer,18,Yes,6.0,58,190,97055,No
+29,India,Married,Master,No,Electrician,3,No,6.0,72,491,293341,No
+46,Canada,Single,Bachelor,No,Accountant,17,Yes,7.0,65,190,69508,Yes
+25,USA,Married,PhD,No,Software Engineer,1,No,8.0,65,491,223359,No
+32,India,Single,PhD,No,Accountant,0,No,6.5,65,491,259988,Yes
+20,Germany,Married,Master,Yes,Nurse,14,Yes,7.5,50,190,208056,No
+31,USA,Married,Bachelor,No,Electrician,4,Yes,6.5,72,190,160169,No
+34,UK,Married,Bachelor,No,Software Engineer,19,Yes,8.0,72,189,58125,No
+21,UK,Married,PhD,No,Software Engineer,10,Yes,6.0,79,482,86059,No
+35,China,Married,Bachelor,No,Software Engineer,9,Yes,6.0,79,491,250641,No
+25,Germany,Married,PhD,No,Software Engineer,1,No,8.0,79,189,153409,No
+21,Canada,Single,Bachelor,No,Software Engineer,2,No,6.0,65,190,198159,No
+19,USA,Single,PhD,No,Accountant,11,Yes,6.0,72,482,287509,No
+47,India,Single,Bachelor,No,Electrician,19,Yes,6.0,65,189,296334,No
+23,Germany,Married,Master,No,Nurse,4,Yes,7.5,50,491,55704,No
+39,Germany,Married,Bachelor,No,Nurse,4,Yes,7.5,79,189,241648,No
+27,UK,Married,Bachelor,No,Nurse,5,Yes,7.0,65,491,254456,No
+21,China,Married,Master,No,Nurse,8,Yes,6.5,65,190,268200,No
+39,China,Single,Bachelor,No,Accountant,1,No,8.0,50,482,161279,No
+46,USA,Single,Master,Yes,Chef,11,Yes,8.0,58,482,253532,Yes
+48,UK,Married,Bachelor,No,Electrician,2,No,8.0,72,482,208280,No
+35,Germany,Single,PhD,No,Software Engineer,19,Yes,7.0,58,190,168516,No
+43,Canada,Single,PhD,No,Chef,11,Yes,7.5,79,491,266222,Yes
+29,UK,Married,Bachelor,No,Nurse,16,Yes,7.0,65,190,247096,No
+19,USA,Single,Bachelor,Yes,Chef,9,Yes,8.0,50,482,220954,No
+27,USA,Married,Bachelor,No,Electrician,13,Yes,6.5,50,190,206995,No
+47,UK,Single,PhD,No,Software Engineer,16,Yes,6.0,72,190,164044,Yes
+21,USA,Married,Bachelor,No,Software Engineer,17,Yes,7.5,58,190,282549,No
+31,UK,Married,PhD,No,Electrician,18,Yes,7.5,72,491,79165,No
+48,India,Married,Master,No,Electrician,16,Yes,7.0,65,189,117203,No
+33,UK,Married,PhD,No,Nurse,13,Yes,7.5,72,189,272821,No
+32,UK,Single,PhD,Yes,Software Engineer,8,Yes,8.0,50,190,54114,No
+25,USA,Married,Master,Yes,Chef,7,Yes,8.0,50,189,246037,No
+31,USA,Married,PhD,No,Accountant,1,No,7.0,79,189,86321,No
+40,China,Married,Bachelor,No,Accountant,12,Yes,8.0,79,190,123297,No
+45,China,Single,Bachelor,Yes,Electrician,6,Yes,6.5,65,190,146652,Yes
+42,India,Married,PhD,No,Nurse,8,Yes,7.0,58,482,149304,No
+47,China,Single,Bachelor,No,Accountant,10,Yes,6.5,72,189,295014,No
+25,UK,Married,PhD,No,Software Engineer,13,Yes,6.0,65,491,206498,No
+38,USA,Single,Bachelor,No,Electrician,3,No,6.5,79,190,67772,No
+33,China,Single,Bachelor,No,Chef,12,Yes,6.0,72,482,153754,No
+30,China,Married,PhD,No,Electrician,1,No,6.0,79,491,53712,No
+35,India,Single,Bachelor,No,Chef,4,Yes,6.5,72,189,182439,Yes
+32,Germany,Married,PhD,Yes,Electrician,10,Yes,7.0,58,482,287565,No
+38,India,Married,Bachelor,No,Electrician,5,Yes,8.0,65,190,288389,Yes
+41,UK,Married,Bachelor,No,Electrician,17,Yes,8.0,72,491,165142,No
+43,USA,Single,Master,No,Chef,9,Yes,6.0,50,190,141736,No
+42,India,Single,Master,No,Chef,3,No,6.0,50,189,101924,No
+45,China,Married,PhD,No,Electrician,8,Yes,7.0,72,491,53726,Yes
+45,USA,Married,Master,No,Accountant,5,Yes,7.5,72,189,139152,No
+45,USA,Single,PhD,Yes,Nurse,1,No,6.5,72,189,77723,No
+30,China,Married,Master,No,Nurse,16,Yes,6.0,50,482,176969,No
+26,India,Married,Bachelor,No,Nurse,4,Yes,8.0,50,190,284182,Yes
+46,China,Married,PhD,No,Chef,5,Yes,7.0,72,491,150494,No
+32,Germany,Single,PhD,Yes,Chef,11,Yes,6.5,79,189,190180,No
+30,USA,Single,Bachelor,No,Accountant,9,Yes,7.0,79,189,258786,No
+18,Canada,Single,PhD,No,Nurse,5,Yes,6.5,58,491,85643,No
+42,Canada,Married,PhD,No,Nurse,7,Yes,6.5,65,189,212396,No
+24,UK,Married,Master,No,Electrician,1,No,6.0,79,482,153896,No
+26,China,Married,PhD,Yes,Chef,11,Yes,7.0,50,482,264432,No
+41,China,Single,Bachelor,No,Nurse,12,Yes,7.0,79,482,291968,No
+18,UK,Married,Master,No,Accountant,6,Yes,8.0,58,482,189999,No
+29,UK,Married,Master,Yes,Accountant,9,Yes,8.0,58,189,143680,No
+25,UK,Married,Bachelor,No,Nurse,12,Yes,6.0,65,491,146546,No
+41,USA,Married,Bachelor,No,Chef,16,Yes,6.0,79,491,203515,No
+48,Germany,Single,Master,No,Accountant,13,Yes,7.5,50,491,129973,No
+28,China,Single,PhD,Yes,Electrician,1,No,8.0,50,491,113449,Yes
+36,USA,Married,Master,No,Accountant,10,Yes,6.5,72,190,159834,No
+34,UK,Single,Bachelor,Yes,Software Engineer,0,No,7.0,50,491,286386,No
+25,China,Single,Master,No,Software Engineer,18,Yes,6.0,65,190,257815,No
+20,USA,Married,Bachelor,Yes,Chef,3,No,7.0,65,190,241305,No
+20,Germany,Married,Master,No,Nurse,18,Yes,7.0,50,482,75537,No
+18,USA,Single,PhD,No,Chef,10,Yes,7.5,50,190,282365,No
+44,Germany,Married,Master,No,Chef,7,Yes,8.0,72,189,127576,No
+22,UK,Single,Master,No,Chef,10,Yes,6.0,50,190,157522,Yes
+27,Germany,Married,Bachelor,Yes,Chef,3,No,7.0,72,482,72612,No
+24,China,Single,Bachelor,No,Electrician,16,Yes,6.0,72,190,275049,Yes
+43,UK,Married,Bachelor,No,Electrician,6,Yes,6.5,50,189,56471,No
+26,China,Single,Master,No,Accountant,7,Yes,7.5,58,189,216703,No
+45,Canada,Single,PhD,Yes,Software Engineer,2,No,6.5,58,189,290069,No
+24,India,Single,Bachelor,Yes,Chef,1,No,6.0,72,482,273131,No
+26,Germany,Married,Bachelor,Yes,Accountant,14,Yes,6.0,50,482,81348,No
+25,India,Single,Master,No,Software Engineer,4,Yes,8.0,58,491,245804,Yes
+29,India,Single,Bachelor,No,Nurse,0,No,7.0,50,482,51177,No
+19,Germany,Married,PhD,No,Electrician,3,No,7.0,50,189,185832,No
+18,UK,Married,PhD,Yes,Software Engineer,14,Yes,6.5,50,189,82779,No
+33,Canada,Single,Bachelor,No,Nurse,19,Yes,7.5,79,482,71636,No
+40,China,Single,Bachelor,No,Software Engineer,18,Yes,7.0,50,190,131889,No
+40,USA,Married,Master,No,Electrician,2,No,8.0,79,482,103551,Yes
+47,China,Married,PhD,Yes,Electrician,19,Yes,6.5,72,482,192628,No
+41,USA,Married,PhD,No,Accountant,10,Yes,6.5,58,189,208670,No
+22,China,Married,Bachelor,Yes,Chef,16,Yes,8.0,58,491,192635,Yes
+20,Germany,Married,Master,No,Software Engineer,12,Yes,7.5,58,189,96819,No
+29,Canada,Single,PhD,No,Software Engineer,10,Yes,8.0,58,491,290398,Yes
+25,USA,Married,PhD,Yes,Nurse,1,No,7.5,58,189,123770,Yes
+39,UK,Single,Master,No,Electrician,8,Yes,8.0,58,482,272127,Yes
+44,China,Single,Master,Yes,Software Engineer,1,No,8.0,58,189,208038,No
+20,China,Single,PhD,No,Electrician,8,Yes,6.0,72,189,262781,No
+18,USA,Married,PhD,No,Software Engineer,8,Yes,6.5,50,189,240961,No
+20,UK,Single,Master,No,Accountant,7,Yes,8.0,65,482,208059,No
+22,UK,Single,PhD,No,Chef,16,Yes,8.0,79,482,128714,No
+32,Germany,Married,Bachelor,No,Software Engineer,0,No,7.0,65,482,285946,No
+31,Germany,Single,Bachelor,No,Electrician,10,Yes,6.5,65,482,239420,No
+20,Germany,Single,Master,No,Accountant,7,Yes,7.0,50,491,74596,Yes
+18,Germany,Married,Master,No,Software Engineer,9,Yes,6.5,50,491,214246,No
+22,Germany,Single,Master,No,Nurse,6,Yes,7.0,50,190,114106,No
+43,Germany,Single,Bachelor,No,Chef,2,No,8.0,58,482,288582,No
+40,Canada,Single,PhD,No,Software Engineer,2,No,8.0,72,491,251039,No
+48,UK,Married,Bachelor,No,Accountant,17,Yes,6.0,58,189,109182,Yes
+31,Germany,Married,PhD,No,Nurse,4,Yes,7.0,72,482,274372,Yes
+24,UK,Married,Bachelor,No,Accountant,11,Yes,7.5,72,190,137163,No
+44,UK,Single,PhD,Yes,Accountant,11,Yes,6.0,65,190,89310,No
+26,India,Single,Bachelor,No,Nurse,18,Yes,7.0,65,190,106088,Yes
+32,Canada,Married,Master,No,Accountant,5,Yes,7.0,72,189,178803,No
+32,Germany,Single,Bachelor,No,Nurse,1,No,6.0,72,491,189978,Yes
+43,China,Single,PhD,Yes,Software Engineer,11,Yes,8.0,58,189,86914,No
+27,USA,Married,Bachelor,Yes,Nurse,18,Yes,7.0,58,482,160350,No
+45,China,Married,Bachelor,No,Nurse,4,Yes,8.0,65,190,95379,No
+30,Canada,Single,Bachelor,No,Chef,11,Yes,6.0,50,189,259684,Yes
+36,USA,Single,Master,No,Nurse,16,Yes,8.0,72,189,295900,Yes

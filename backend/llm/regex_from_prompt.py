@@ -5,34 +5,35 @@ import json
 
 
 def parse_instruction(instruction: str, headers: list[str]) -> dict:
-
     prompt = f"""
-You are a regex assistant. The user has a table with the following columns: {headers}.
-Instruction: "{instruction}"
+You are a professional regular expression generator.
 
-Your task:
-1. Identify the target column name from the instruction.
-2. Identify the type of pattern (e.g., email, phone, date, keyword).
-3. Generate the proper regular expression pattern for the pattern type:
-    - For email, return: \\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{{2,7}}\\b
-    - For phone, return: \\b\\d{{10}}\\b
-    - For keyword match like "milk", just return "milk"
+A user provides the following instruction:
 
-Return the result strictly as JSON in this format:
+"{instruction}"
+
+The table has the following columns: {headers}
+
+Your job:
+1. Detect which column this instruction is targeting.
+2. Understand what kind of data to match (e.g., email, phone, keyword).
+3. Generate a correct and robust regular expression for that pattern.
+4. Suggest the replacement value.
+
+⚠️ DO NOT explain anything. Just return JSON strictly in the following format:
+
 {{
-  "column": "Email",
-  "pattern_type": "email",
-  "regex": "...",
+  "column": "Phone",
+  "pattern_type": "phone",
+  "regex": "<your generated regex here>",
   "replacement": "REDACTED"
 }}
 
-DO NOT return explanation, markdown, or any text. Only raw JSON.
+❌ No Markdown, no extra text.
+✅ Only raw JSON that can be parsed by Python.
 """
-
-
-
     response = call_gpt(prompt)
     try:
         return json.loads(response)
     except json.JSONDecodeError:
-        raise ValueError(" !!!! Failed to parse GPT response:\n" + response)
+        raise ValueError("!!!! Failed to parse GPT response:\n" + response)

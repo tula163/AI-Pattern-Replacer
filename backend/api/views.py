@@ -140,9 +140,11 @@ def modify_table(request):
         new_rows = []
 
         for row in rows:
-            if len(row) > col_idx and isinstance(row[col_idx], str):
-                row[col_idx] = compiled.sub(replacement, row[col_idx])
+            if len(row) > col_idx:
+                value = str(row[col_idx])  # 强制转换为字符串
+                row[col_idx] = compiled.sub(replacement, value)
             new_rows.append(row)
+
 
         # success record
         RegexCallHistory.objects.create(
