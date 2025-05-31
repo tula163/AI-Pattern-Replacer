@@ -23,7 +23,7 @@ instance.interceptors.response.use(
     const res = response.data;
 
     if (res.code !== 200) {
-      return Promise.reject(new Error(res.message || '请求失败'));
+      return Promise.reject(new Error(res.message || 'request fail'));
     }
 
     return res.data; 

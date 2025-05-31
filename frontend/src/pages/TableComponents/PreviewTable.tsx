@@ -65,12 +65,18 @@ const ModifiedTable: React.FC<ModifiedTableProps> = ({
                           <TableCell
                             key={colIdx}
                             sx={{
-                              backgroundColor: changed ? '#fff7c0' : 'inherit',
+                              backgroundColor: changed ? 'rgba(255, 249, 196, 0.9)' : 'inherit',
                               fontWeight: changed ? 'bold' : 'normal',
-                              whiteSpace: 'nowrap'
+                              fontStyle: changed ? 'italic' : 'normal',
+                              borderLeft: changed ? '4px solid #facc15' : undefined,
+                              transition: 'background-color 0.3s ease',
+                              whiteSpace: 'nowrap',
+                              '&:hover': {
+                                backgroundColor: changed ? 'rgba(255, 245, 160, 1)' : 'inherit'
+                              }
                             }}
                           >
-                            {cell}
+                              {cell !== undefined && cell !== null ? cell : ''}
                           </TableCell>
                         );
                       })}

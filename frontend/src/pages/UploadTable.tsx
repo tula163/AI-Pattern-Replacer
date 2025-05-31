@@ -45,7 +45,7 @@ const UploadTable = () => {
  
   
     try {
-      const res = await apiModify({ instruction: inputText, table_data: originalData });
+      const res = await apiModify({ instruction: inputText, table_data: originalData ,filename: fileName ?? ''});
       setModifiedData(res.modified_data);
       setIsTransformed(true); 
 
@@ -105,25 +105,27 @@ const UploadTable = () => {
 
           {/* left */}
           <div className="flex-1 px-10 py-6 h-screen overflow-hidden" >
+          <LoadingContainer loading={tableLoading} >
             <div className="bg-white rounded-xl  h-full shadow-md p-6 ">
-              <div className="flex justfy-between">   <h2 className="text-xl font-bold mb-4">📁 {fileName}</h2>
+              <div className="flex justify-between">   <h2 className="text-xl font-bold mb-4">📁 {fileName}</h2>
               {isTransformed && <button
                 onClick={() => exportToExcel(modifiedData, 'ModifiedData.xlsx')}
                 className="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700"
               >
                 Export
               </button>} </div>
-              <LoadingContainer loading={tableLoading} >
+           
 
               <ModifiedTable
                 modifiedData={isTransformed ? modifiedData : originalData}
                 originalData={originalData}
                 highlightChanges={isTransformed}
               />
-              </LoadingContainer>
+            
 
 
             </div>
+            </LoadingContainer>
           </div>
 
 

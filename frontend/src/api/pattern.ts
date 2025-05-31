@@ -1,9 +1,10 @@
 import api from './index';
-// import type { BaseResponse } from '../types/api';
+
 
 interface ModifyTableRequest {
   instruction: string;
   table_data: string[][];
+  filename:string
 }
 
 interface RegexResponseData {
