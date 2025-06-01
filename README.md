@@ -6,7 +6,7 @@ A web-based tool that allows users to upload tabular data (e.g. CSV, Excel), des
 
 - Backend: Django + Python 3.11 + simpleui
 
-- AI Regex Engine: OpenRouter : mistralai/mistral-7b-instruct
+- AI Engine: OpenRouter : mistralai/mistral-7b-instruct
 
 - Database: SQLite3 
 
@@ -69,10 +69,16 @@ pattern-replacer/
 │   ├── api/                    # Django app (models, views)
 │   ├── llm/                    # GPT client & prompt handler
 │   ├── media/uploads/         # Uploaded + merged files
+|   ├── regex_platform/        # GPT client & prompt handler
+|   |—— requirements.txt       # 
 │   └── manage.py
 ├── frontend/
-│   ├── src/pages/             # Upload, Preview, Transform pages
-│   ├── src/components/        # Snackbar, Loader, etc.
+│   ├── src/pages/             # Home, Transform pages
+│   ├── src/components/        # Snackbar, Loader, Navbar etc.
+│   ├── src/api/               # request.
+│   ├── src/routes/            # Routing configuration file.
+│   ├── src/store/             # Global state management.
+|   ├── src/utils/             # utility class.
 │   └── vite.config.ts
 └── start.sh                   # One-click startup script
 ```
@@ -82,6 +88,8 @@ pattern-replacer/
 - Natural language to regex transformation
 
 - llm  regex matching
+  
+- File slicing upload
 
 - Regex and file modification history
 
