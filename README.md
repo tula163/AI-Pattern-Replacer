@@ -15,7 +15,6 @@ A web-based tool that allows users to upload tabular data (e.g. CSV, Excel), des
 
 ```bash
    git clone https://github.com/yourname/pattern-replacer.git
-
    cd pattern-replacer
 ```
 
