@@ -11,35 +11,45 @@ A web-based tool that allows users to upload tabular data (e.g. CSV, Excel), des
 - Database: SQLite3 
 
 # Getting Started (initial)
-1. Clone the repo
+### 1. Clone the repo
 
-- git clone https://github.com/yourname/pattern-replacer.git
-- cd pattern-replacer
-
-2. Create and activate backend virtual environment
-
-- cd backend
-- python -m venv .env
-- source .env/bin/activate  # Mac/Linux
-# .env\Scripts\activate    # Windows
-- pip install -r requirements.txt
+```bash
+   git clone https://github.com/yourname/pattern-replacer.git
+   cd pattern-replacer
+```
 
 
-3. Run backend
+### 2. Create and activate backend virtual environment
+   
+```bash
+  cd backend
+  python -m venv .env
+  source .env/bin/activate  # Mac/Linux
+  # .env\Scripts\activate    # Windows
+  pip install -r requirements.txt
 
-- python manage.py migrate
-- python manage.py runserver
+```
 
-4. Start frontend
-- cd frontend
-- npm install
-- npm run dev
 
+###  3. Run backend
+
+```bash
+  python manage.py migrate
+  python manage.py runserver
+```
+### 4. Start frontend
+
+```bash
+  cd frontend
+  npm install
+  npm run dev
+```
 # Quick start(fordevloper)
 
-
-- do in root directionary : bash ./start.sh
-
+```bash
+# do in root directionary :
+ bash ./start.sh
+```
 #  Usage
 
 1. Upload a .csv file with tabular data.
@@ -53,6 +63,7 @@ A web-based tool that allows users to upload tabular data (e.g. CSV, Excel), des
 5. Export the cleaned table.(if you want)
 
 # Project Structure
+```bash
 pattern-replacer/
 ├── backend/
 │   ├── api/                    # Django app (models, views)
@@ -64,7 +75,7 @@ pattern-replacer/
 │   ├── src/components/        # Snackbar, Loader, etc.
 │   └── vite.config.ts
 └── start.sh                   # One-click startup script
-
+```
 
 # Features
 
