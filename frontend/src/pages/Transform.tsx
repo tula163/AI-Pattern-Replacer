@@ -29,8 +29,8 @@ const Transform = () => {
 
   const [loading, setLoading] = useState(false);
   const [tableLoading, setTableLOading] = useState(false);
-  const [inputText, setInputText] = useState("Find email addresses in the Email column and replace them with 'REDACTED' ");
-
+  const [inputText, setInputText] = useState("");
+  const [error, setError] = useState(false);
 
 
 
@@ -43,6 +43,10 @@ const Transform = () => {
 
 
   const handleTransform = async () => {
+    if (inputText.trim() === '') {
+      setError(true);
+      return;
+    }
     setLoading(true);
     setTableLOading(true)
 
@@ -68,10 +72,11 @@ const Transform = () => {
 
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const value = e.target.value;
+    if (e.target.value.trim() !== '') setError(false);
     setInputText(value);
 
   };
-  
+
 
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -136,12 +141,23 @@ const Transform = () => {
               <label htmlFor="instruction" className="block font-medium text-sm mb-2">🧠 Describe your change</label>
               <textarea
                 id="instruction"
-                className="w-full p-2 border border-gray-300 rounded resize-none"
+                className={`
+                  w-full p-3 rounded-md bg-white text-sm 
+                  ${error ? 'border border-red-500' : 'border border-gray-300'} 
+                  focus:outline-none focus:ring-2 
+                  ${error ? 'focus:ring-red-500' : 'focus:ring-blue-500'}
+                `}
                 rows={8}
-                placeholder="e.g. Replace phone number in Phone column with REDACTED"
+                placeholder="e.g. Find email addresses in the Email column and replace them with 'REDACTED'"
                 value={inputText}
                 onChange={handleTextChange}
               />
+
+              {error && (
+                <p className="text-red-500 text-sm mt-2 ml-1">
+                  Please describe your change before submitting.
+                </p>
+              )}
             </div>
 
 
