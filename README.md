@@ -10,7 +10,7 @@ A web-based tool that allows users to upload tabular data (e.g. CSV, Excel), des
 
 - Database: SQLite3 
 
-# Getting Started (initial)
+# Getting Started (first start project without install dependency )
 ### 1. Clone the repo
 
 ```bash
@@ -44,7 +44,7 @@ A web-based tool that allows users to upload tabular data (e.g. CSV, Excel), des
   npm install
   npm run dev
 ```
-# Quick start(fordevloper)
+# Quick start(for devloper who alerday installed  dependency)
 
 ```bash
 # do in root directionary :
