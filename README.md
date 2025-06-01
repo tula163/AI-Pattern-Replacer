@@ -67,11 +67,11 @@ A web-based tool that allows users to upload tabular data (e.g. CSV, Excel), des
 pattern-replacer/
 ├── backend/
 │   ├── api/                    # Django app (models, views)
-│   ├── llm/                    # GPT client & prompt handler
+│   ├── llm/                    # llm model & prompt handler
 │   ├── media/uploads/         # Uploaded + merged files
-|   ├── regex_platform/        # GPT client & prompt handler
-|   |—— requirements.txt       # 
-│   └── manage.py
+|   ├── regex_platform/        # Project Main Directory
+|   |—— requirements.txt       # Dependency list
+│   └── manage.py              # Entry file
 ├── frontend/
 │   ├── src/pages/             # Home, Transform pages
 │   ├── src/components/        # Snackbar, Loader, Navbar etc.
