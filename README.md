@@ -1,6 +1,12 @@
 # Pattern Replacer
 A web-based tool that allows users to upload tabular data (e.g. CSV, Excel), describe a natural language instruction (e.g. “Find email address in Email column and replace them with REDACTED”), and automatically apply regex-based modifications to the data.
 
+# Demonstration video
+```bash
+https://youtu.be/nD6gp678F8w
+
+```
+
 # Tech Stack
 - Frontend: React + Vite + TypeScript + MUI + Tailwind + Zustand
 
