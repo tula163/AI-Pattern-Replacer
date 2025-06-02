@@ -41,10 +41,19 @@ const Transform = () => {
   const setIsTransformed = useDataStore((state) => state.setIsTransformed);
   const setModifiedData = useDataStore((state) => state.setModifiedData);
 
+  const validateInstructionFormat = (text: string) => {
+    const pattern = /^find .+ in .+ column and replace them with .+/i;
+    return pattern.test(text.trim());
+  };
 
   const handleTransform = async () => {
     if (inputText.trim() === '') {
       setError(true);
+      return;
+    }
+
+    if (!validateInstructionFormat(inputText)) {
+      showMessage('error', "⚠️ Please follow the format:\n'Find xxx in xxx column and replace them with xxx' !");
       return;
     }
     setLoading(true);

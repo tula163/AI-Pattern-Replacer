@@ -69,7 +69,7 @@ export default function FileUpload() {
         <CloudUploadIcon fontSize="large" color="disabled" />
         <Typography className="font-medium text-gray-600">Browse Files</Typography>
         <Typography variant="body2" className="text-gray-400">
-          Drag and drop files here
+          Drag and drop csv or xsls files here
         </Typography>
 
         <Input
